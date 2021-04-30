@@ -64,13 +64,13 @@ class Main extends Component {
                     <h1>Typing Test to Determine WPM</h1>
                     <ul className="header">
                         <li><NavLink exact to="/" onClick={this.callback2}>Beginner</NavLink></li>
-                        <li><NavLink to="/two" onClick={this.callback2}>Intermediate</NavLink></li>
-                        <li><NavLink to="/three" onClick={this.callback2}>Hard Mode</NavLink></li>
+                        <li><NavLink to="/intermediate" onClick={this.callback2}>Intermediate</NavLink></li>
+                        <li><NavLink to="/hardmode" onClick={this.callback2}>Hard Mode</NavLink></li>
                     </ul>
                     <div className="content">
                         <Route exact path="/"><One parentCallback={this.handleCallback} parentCallback2={this.handleCallback2}/></Route>
-                        <Route path="/two"><Two parentCallback={this.handleCallback} parentCallback2={this.handleCallback2}/></Route>
-                        <Route path="/three"><Three parentCallback={this.handleCallback} parentCallback2={this.handleCallback2}/></Route>
+                        <Route path="/intermediate"><Two parentCallback={this.handleCallback} parentCallback2={this.handleCallback2}/></Route>
+                        <Route path="/hardmode"><Three parentCallback={this.handleCallback} parentCallback2={this.handleCallback2}/></Route>
                     </div>
                 </div>
             </HashRouter>
