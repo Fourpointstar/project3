@@ -1,0 +1,86 @@
+body{
+    box-sizing: border-box;
+    font-family: sans-serif;
+
+}
+h1{
+    display: block;
+    width: 50%;
+    text-align: center;
+    background-color:pink;
+    border-radius: 50px;
+    margin-left: auto;
+    margin-right: auto;
+}
+.countUp{
+    background-color:lightskyblue;
+    border-radius: 20px;
+    padding: 5px;
+}
+h2{
+    text-align: center;
+}
+.header{
+    display: inline-block;
+}
+li{
+    display: inline-block;
+    width: 33.3333333%;
+    text-align: center;
+}
+ul{
+    width: 99%;
+    background-color:aqua;
+    padding: 4px;
+    border-radius:50px;
+    margin-left: auto;
+    margin-right: auto;
+}
+ul li a{
+    display: inline-block;
+    width: 100%;
+    font-weight: bold;
+    text-decoration: none;
+    border-radius: 50px;
+
+}
+
+.active{
+    background-color:pink;
+}
+textarea{
+    display: block;
+    width: 50%;
+    border-radius:3px;
+    margin-left: auto;
+    margin-right: auto;
+}
+.timer{
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+    padding: 5px;
+}
+button{
+    background-color:cornflowerblue;
+    box-shadow: 1px 2px 4px red;
+    margin:auto;
+    border-radius: 10px;
+    color: cornsilk;
+    font-weight: bold;
+    padding: 8px;
+    font-size: 1.2em;
+    border: 2px solid purple;
+    transition: color .2s ease-in, background-color .2s ease-out, border-radius 1s ease;
+}
+button:hover{
+color: cornflowerblue;
+background-color: cornsilk;
+border-radius: 100%;
+}
+footer{
+    display: block;
+    margin: auto;
+    text-align: center;
+}
