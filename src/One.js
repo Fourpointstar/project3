@@ -15,11 +15,9 @@ class One extends Component{
     onTrigger=()=>{
         this.props.parentCallback(this.state.wordcount)
         this.props.parentCallback2(this.state.text)
-        console.log(this.text.length)
     }
 
     componentDidMount(){
-        console.log(this.state.text.length)
         this.onTrigger()
     }
 

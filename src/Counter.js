@@ -2,7 +2,6 @@ import React, { Component } from "react";
 import Main from "./Main";
 
 
-var texts="";
 class Counter extends Component{
     constructor(props){
         super(props);
@@ -49,7 +48,7 @@ class Counter extends Component{
                 fired:false,
                 close:true
             })
-            
+
             clearInterval(this.intervals);
             
         } else if (this.state.textarea2!==this.state.text){
