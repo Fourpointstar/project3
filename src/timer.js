@@ -7,7 +7,7 @@ function counter(state,action){
 
     switch(action.type){
         case "increase":
-            console.log("hit the switch");
+
             return { count:Math.round(count*10+1)/10 };
         case "decrease":
             return {count:0};

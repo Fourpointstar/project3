@@ -2,29 +2,47 @@ import React, { Component } from "react";
 import Main from "./Main";
 
 
-
+var texts="";
 class Counter extends Component{
     constructor(props){
         super(props);
         this.state={
             textarea: "",
-            timer:0,
-            intervals:0,
-            text:null,
+            intervals:null,
+            text:"",
             wordcount:null,
             displaytext:"Input string is not correct yet",
             fired:false,
             wordpermin:null,
-            close:false
+            close:false,
+            textarea2:"",
+            textLength:"",
         }
 
         this.startCounter=this.startCounter.bind(this);
         this.timerTick=this.timerTick.bind(this);
-        this.updateInput=this.updateInput.bind(this);
         this.reset=this.reset.bind(this);
+        this.cur=this.cur.bind(this);
     }
+
+    
     startCounter(e){
-        if (this.state.textarea===this.state.text){
+        if (this.state.fired===false){
+            console.log("timer")
+                this.intervals=setInterval(this.timerTick, 100)
+            this.setState({fired:true});
+        }
+        
+        this.setState({
+            textarea:this._input.value,
+            textarea2:e.target.value,
+        });
+        console.log(this.state.textarea2)
+        setTimeout(this.cur,1)
+    }
+    cur(){
+        if (this.state.textarea2===this.state.text){
+            console.log(this.state.textarea.length)
             this.calculateWPM();
             this.setState({
                 displaytext:"The string is correct!",
@@ -33,37 +51,24 @@ class Counter extends Component{
             })
             clearInterval(this.intervals);
             
-        } else if (this.state.textarea!==this.state.text){
+        } else if (this.state.textarea2!==this.state.text){
+            console.log(this.state.textarea.length)
             this.setState({
                 displaytext:"Input string is not correct yet"
             })
         }
-
-
-        this.updateInput(e);
-
-        if (this.state.fired===false){
-            console.log("timer")
-                this.intervals=setInterval(this.timerTick, 100)
-            this.setState({fired:true});
-        } 
-    }
-    updateInput(){
-            this.setState({
-                textarea:this._input.value
-            });
     }
 
     componentDidUpdate(){
-        if (this.state.timer===0){
+        if (this.props.countValue===0){
             this.props.decreaseCount();
         }
     }
 
-    wpm=null;
+    
     calculateWPM(){
         this.wpm=null;
-        this.wpm=this.state.timer/60;
+        this.wpm=this.props.countValue/60;
         this.wpm=this.state.wordcount/this.wpm;
         this.wpm=Math.round(this.wpm*100)/100;
         this.setState({
@@ -74,22 +79,20 @@ class Counter extends Component{
 
 
     timerTick(){
-        this.setState({
-            timer:this.state.timer+.1,
-        });
         this.props.increaseCount();
     }
 
     handleCall=(childData)=>{
         this.setState({
-            text:childData.substring(0,childData.length-1),
+            text:childData,
             textarea: "",
-            timer:0,
             intervals:0,
             displaytext:"Input string is not correct yet",
             fired:false,
             wordpermin:null
         })
+        clearInterval(this.intervals);
+        return this.props.decreaseCount();
     }
 
     handleCall2=(childData)=>{
@@ -98,9 +101,7 @@ class Counter extends Component{
     handleCall3=(childData)=>{
         this.setState({close:childData})
     }
-    handleCall4=(childData)=>{
-        this.setState({timer:childData})
-    }
+
 
     reset(e){
         e.preventDefault();
@@ -108,7 +109,6 @@ class Counter extends Component{
         clearInterval(this.intervals)
         this.setState({
             textarea: "",
-            timer:0,
             intervals:0,
             displaytext:"Input string is not correct yet",
             fired:false,
@@ -121,8 +121,8 @@ class Counter extends Component{
         var self=this;
         return(
             <div className="countUp">
-                <Main parentCall={this.handleCall} parentCall2={this.handleCall2} parentCall3={this.handleCall3} parentCall4={this.handleCall4}/>
-                <textarea readOnly={this.state.close} rows="8"  onChange={this.startCounter} value={this.state.textarea}
+                <Main parentCall={this.handleCall} parentCall2={this.handleCall2} parentCall3={this.handleCall3}/>
+                <textarea readOnly={this.state.close} rows="8" onChange={this.startCounter} value={this.state.textarea}
                 ref={
                     function(el){
                         self._input = el;

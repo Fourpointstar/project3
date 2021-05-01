@@ -20,7 +20,6 @@ class Main extends Component {
             wordcount:null,
             text:null,
             intervals:null,
-            timer:0
         }
         this.handleCallback=this.handleCallback.bind(this);
         this.handleCallback2=this.handleCallback2.bind(this);
@@ -50,8 +49,6 @@ class Main extends Component {
         this.props.parentCall(this.state.text)
         this.props.parentCall2(this.state.wordcount)
         this.props.parentCall3(this.state.close)
-        this.props.parentCall4(this.state.timer)
-
     }
 
 
