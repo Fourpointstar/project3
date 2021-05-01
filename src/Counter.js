@@ -28,7 +28,6 @@ class Counter extends Component{
     
     startCounter(e){
         if (this.state.fired===false){
-            console.log("timer")
                 this.intervals=setInterval(this.timerTick, 100)
             this.setState({fired:true});
         }
@@ -37,22 +36,24 @@ class Counter extends Component{
             textarea:this._input.value,
             textarea2:e.target.value,
         });
-        console.log(this.state.textarea2)
+
         setTimeout(this.cur,1)
     }
+
     cur(){
         if (this.state.textarea2===this.state.text){
-            console.log(this.state.textarea.length)
+
             this.calculateWPM();
             this.setState({
                 displaytext:"The string is correct!",
                 fired:false,
                 close:true
             })
+            
             clearInterval(this.intervals);
             
         } else if (this.state.textarea2!==this.state.text){
-            console.log(this.state.textarea.length)
+
             this.setState({
                 displaytext:"Input string is not correct yet"
             })
