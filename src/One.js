@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import Header from "./Header";
 
 class One extends Component{
     constructor(props){
@@ -22,12 +23,13 @@ class One extends Component{
     }
 
 
+    header="Test your typing skills with a basic paragraph!"
     text="If you type this fast enough, you may be able to get a high WPM! My average typing speed is about 77 words per minute and, to me, that's an accomplishment. This is just the first of three tests to see how fast you can type. I wish you all the luck in your endeavor to increase your typing speed through practice."
 
     render(){
         return(
             <div>
-                <h2>Test your typing skills with a basic paragraph!</h2>
+                <Header content={this.header} />
                 <p id="textCompare">{this.text}</p>
             </div>
         );
